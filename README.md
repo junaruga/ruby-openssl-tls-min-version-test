@@ -1,1 +1,1 @@
-# ruby-optnssl-tls-min-version-test
+# ruby-openssl-tls-min-version-test
