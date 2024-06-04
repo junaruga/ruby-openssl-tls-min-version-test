@@ -1,0 +1,35 @@
+<VirtualHost *:443>
+    ServerName tls-10.@DOMAIN@
+    DocumentRoot /var/www/html
+    SSLEngine on
+    SSLProtocol -all +TLSv1
+    SSLCertificateFile "/etc/pki/tls/certs/test.crt"
+    SSLCertificateKeyFile "/etc/pki/tls/private/test.key"
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName tls-11.@DOMAIN@
+    DocumentRoot /var/www/html
+    SSLEngine on
+    SSLProtocol -all +TLSv1.1
+    SSLCertificateFile "/etc/pki/tls/certs/test.crt"
+    SSLCertificateKeyFile "/etc/pki/tls/private/test.key"
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName tls-12.@DOMAIN@
+    DocumentRoot /var/www/html
+    SSLEngine on
+    SSLProtocol -all +TLSv1.2
+    SSLCertificateFile "/etc/pki/tls/certs/test.crt"
+    SSLCertificateKeyFile   "/etc/pki/tls/private/test.key"
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName tls-13.@DOMAIN@
+    DocumentRoot /var/www/html
+    SSLEngine on
+    SSLProtocol -all +TLSv1.3
+    SSLCertificateFile "/etc/pki/tls/certs/test.crt"
+    SSLCertificateKeyFile   "/etc/pki/tls/private/test.key"
+</VirtualHost>
