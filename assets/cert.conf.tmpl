@@ -1,14 +1,10 @@
+# See the manual openssl-req(1) for details.
 [ req ]
 distinguished_name = req_distinguished_name
 
 [ req_distinguished_name ]
-countryName_default            = CZ
-stateOrProvinceName_default    = Brno
-# The openssl command fails with "error, no objects specified in config file"
-# without this item.
+# The commonName is required. The openssl command fails with "Error: No objects
+# specified in config file" without this setting.
 commonName = Common Name (hostname, IP, or your name)
 # Enable all the sub-domains of the domain.
 commonName_default = *.@DOMAIN@
-localityName_default = Brno
-organizationName_default = Test Organization
-emailAddress_default = test@@DOMAIN@
