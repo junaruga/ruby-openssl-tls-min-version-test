@@ -7,7 +7,8 @@ stateOrProvinceName_default    = Brno
 # The openssl command fails with "error, no objects specified in config file"
 # without this item.
 commonName = Common Name (hostname, IP, or your name)
-commonName_default = @DOMAIN@
+# Enable all the sub-domains of the domain.
+commonName_default = *.@DOMAIN@
 localityName_default = Brno
 organizationName_default = Test Organization
 emailAddress_default = test@@DOMAIN@
