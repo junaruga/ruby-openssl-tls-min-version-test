@@ -32,21 +32,24 @@ fi
 command -v openssl
 openssl version
 
-sed -e "s/@DOMAIN@/${SSL_DOMAIN}/g" "${ROOT_DIR}/assets/z-ssl-tls-test.conf.tmpl" \
-  > "${TMP_DIR}/z-ssl-tls-test.conf"
+sed -e "s/@DOMAIN@/${SSL_DOMAIN}/g" \
+    "${ROOT_DIR}/assets/z-ssl-tls-test.conf.tmpl" \
+    > "${TMP_DIR}/z-ssl-tls-test.conf"
 openssl genrsa -out "${TMP_DIR}/test.key" 4096
 sed -e "s/@DOMAIN@/${SSL_DOMAIN}/g" "${ROOT_DIR}/assets/cert.conf.tmpl" \
-  > "${TMP_DIR}/cert.conf"
-openssl req -new -key "${TMP_DIR}/test.key" -config "${TMP_DIR}/cert.conf" -out "${TMP_DIR}/test.csr" -sha512 -batch
-openssl x509 -req -in "${TMP_DIR}/test.csr" -signkey "${TMP_DIR}/test.key" -out "${TMP_DIR}/test.crt" -sha512
+    > "${TMP_DIR}/cert.conf"
+openssl req -new -key "${TMP_DIR}/test.key" -config "${TMP_DIR}/cert.conf" \
+    -out "${TMP_DIR}/test.csr" -sha512 -batch
+openssl x509 -req -in "${TMP_DIR}/test.csr" -signkey "${TMP_DIR}/test.key" \
+    -out "${TMP_DIR}/test.crt" -sha512
 
 # Generate testing hosts file.
 sed -e "s/@DOMAIN@/${SSL_DOMAIN}/g" "${ROOT_DIR}/assets/hosts.tmpl" \
-  > "${TMP_DIR}/hosts"
+    > "${TMP_DIR}/hosts"
 
 # Generate a testing Ruby script.
 sed -e "s/@DOMAIN@/${SSL_DOMAIN}/g" "${ROOT_DIR}/assets/test.rb.tmpl" \
-  > "${TMP_DIR}/test.rb"
+    > "${TMP_DIR}/test.rb"
 
 # Deploy the SSL certification keys.
 # See the following documents.
@@ -60,14 +63,15 @@ restorecon /etc/pki/tls/certs/test.crt
 restorecon /etc/pki/tls/private/test.csr
 restorecon /etc/pki/tls/private/test.key
 # Deploy the testing HTTPD configuration file.
-sudo cp -p ${TMP_DIR}/z-ssl-tls-test.conf /etc/httpd/conf.d/z-ssl-tls-test.conf
+sudo cp -p "${TMP_DIR}/z-ssl-tls-test.conf" \
+    /etc/httpd/conf.d/z-ssl-tls-test.conf
 
 if ! grep -E "tls-[0-9]+.${SSL_DOMAIN}" /etc/hosts; then
-  # Backup the hosts file just in case.
-  sudo cp -p /etc/hosts "/etc/hosts.${TIMESTAMP_NOW}"
-  # Append the testing domains.
-  cat ${TMP_DIR}/hosts | sudo tee -a /etc/hosts
-  cat /etc/hosts
+    # Backup the hosts file just in case.
+    sudo cp -p /etc/hosts "/etc/hosts.${TIMESTAMP_NOW}"
+    # Append the testing domains.
+    cat "${TMP_DIR}/hosts" | sudo tee -a /etc/hosts
+    cat /etc/hosts
 fi
 
 # Run HTTPD.
