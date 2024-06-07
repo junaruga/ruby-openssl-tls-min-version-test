@@ -1,0 +1,101 @@
+CONNECTED(00000003)
+---
+Certificate chain
+ 0 s:CN = *.example.com
+   i:CN = *.example.com
+   a:PKEY: rsaEncryption, 4096 (bit); sigalg: RSA-SHA512
+   v:NotBefore: Jun  7 13:33:18 2024 GMT; NotAfter: Jul  7 13:33:18 2024 GMT
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIEtzCCAp8CFHxM+nJCmNcT68fcqsMkNBnNxp6JMA0GCSqGSIb3DQEBDQUAMBgx
+FjAUBgNVBAMMDSouZXhhbXBsZS5jb20wHhcNMjQwNjA3MTMzMzE4WhcNMjQwNzA3
+MTMzMzE4WjAYMRYwFAYDVQQDDA0qLmV4YW1wbGUuY29tMIICIjANBgkqhkiG9w0B
+AQEFAAOCAg8AMIICCgKCAgEA4f/+lEgymd3u+vHQc8EpT7xXzYRAnb0FqnlTAA9d
+vFEo6D1qhMRbOqecVvAPyNkfmOp2R0zGAZLuSl65b2ZlIMFj1P6YmV6JvWJe7MRL
+phoK2ZBsdEIrBwjlKzoWZaKeMO2txU256oGr1YJBvU97O9ScUssboD+tLVE4I37i
+QfoNrDALKTMZ4vRRug98ZxCYBp7eK1s+nizU+474jf+Ppr4fdiXn+AtOQAqOkN9k
+4XrWr+f/Uua3t2k3siRAvG3KaQFJisTPWPvitYZS0lR1lGx0BmLU5cTu+G+GDbdM
+rLPL7jdQeBusWt++mPCu8NgAdktRYXm1K34LLyQgkiv8kpb/Tw4CGZaTkBA/0Q+X
+w/IBET0uiG0VPYIDlgWmMEjAqn3EmaH4sxQoqoDfRfiSAqC4cMkozxvyP1XuqgUv
+etkVNLaHnREuoZ0X/mPsltvMLsU10+QG2EqPqtNhXjQRDMyFNrloj0T3VlNYIEKX
+xveyAggtG7Yk567eMeInweXQdWpP0ZEApAPHAxMY/FgllyrSnHXIIwT+JZspNS4y
+ezeP+tOFP1v1iXRJscYeHWCZcShYhb/SetHKUTN7VgIFFqgqTsleS98shHy3Ui7h
+j4RIZYjt+x3mAXUsSgVeJkdA9GRxhnCnhEb9LTbGsb+st9f8+BWIpBguWGQ1ECvu
+Aj0CAwEAATANBgkqhkiG9w0BAQ0FAAOCAgEAK6Pv8ESMcuxWAfFmZVyrOeCVGzV7
+ZSb3W9fD+7LHduTG/Irh0JLmsgKmauaBV+Io3UOrdQKUfeMrxdqCG0Y7lupVuv6S
+x20K40PmPwi0GeZHt0Im9FvCFvuo7YzaPHKx3clA1KEDcxUNlUK8O2rIplvWv05K
+d/2lyszo8l0kodcDNL8vzUQz2xXHKOfPOz/V5be2cS3KpMjeDfTEdGsZrohZu1Fk
+Mqx75N3vav9C6UwPDNKWxq9Tdfi85BsPYG/CZa1IUwzlA9CsUzs+q/QwqD5aL5DC
+v97cB2Ah5O9XPDVCWx6IeFJ10D/edF7qM1N4O2jw5eDng4xQ8JYINZgV8n0ffzej
+RqB+EPk1PKdcnDSG82oDbZA2ruQ9qEcRRk0JFLp6FT9F+BXPOpi9q0ljdOq4LTwC
+ZYtktwGRySiZavB2aVnS79+wQHry7Wlfzak/rx8hi8Nz3anH8VREPLeYJdkpi/eH
+L4DXkI9Yy7mxNUpf3zeE57u3tzn4QoTXfnv4Llq3fkPmPyEW7ISnf3UFcU1tBY8r
+4FLNboFOitj8TSmCD4kjAn80ryFFwY3jFlKYZ4PkU292jkhewuNRKQczjkv6XdAJ
+RxiER9oic90u6n7Xeu+k5yFOEE7v8bPAMuJZCHtja/bOPxWEl2ft6fy7a8pxzLAN
+qE0ZG816/MUuTww=
+-----END CERTIFICATE-----
+subject=CN = *.example.com
+issuer=CN = *.example.com
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: RSA-PSS
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 2160 bytes and written 441 bytes
+Verification: OK
+---
+New, TLSv1.2, Cipher is ECDHE-RSA-AES256-GCM-SHA384
+Server public key is 4096 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1.2
+    Cipher    : ECDHE-RSA-AES256-GCM-SHA384
+    Session-ID: 6B0C72430E8B027799702FE7F20E91DE26541F2CEC01460BBF7360B14ACED56C
+    Session-ID-ctx: 
+    Master-Key: E27B16EED948CAB4C780DE9312E8E40061D234AB9ABC19CC6E27D70316DD2D2D7A7092944D5AA9122401756E0C2810DC
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 300 (seconds)
+    TLS session ticket:
+    0000 - 1c ca d7 0e cf 6c 16 9b-a0 ce 09 a7 0f 56 45 b7   .....l.......VE.
+    0010 - 93 20 e8 72 d2 ef 8d 40-52 21 b4 13 1e 4a 5b f9   . .r...@R!...J[.
+    0020 - 9c ee df 51 5b fb 30 d7-6c 1c 2e 42 47 a0 ca 80   ...Q[.0.l..BG...
+    0030 - d2 68 fc e9 a6 e1 de c4-34 20 f7 f6 3f 96 9c bb   .h......4 ..?...
+    0040 - c0 01 e5 6d cb 4e 23 d1-06 25 8c ab cc 09 95 05   ...m.N#..%......
+    0050 - f2 3d 63 a5 f2 29 b8 ff-6d 7b 03 8a 61 91 d8 6a   .=c..)..m{..a..j
+    0060 - bc 51 e3 39 07 2e 55 3c-12 f7 77 b9 a8 78 28 43   .Q.9..U<..w..x(C
+    0070 - de 13 f8 50 0d 33 88 71-d2 28 82 73 a7 09 aa a5   ...P.3.q.(.s....
+    0080 - c3 a7 e2 f4 73 c7 84 ad-a0 73 dc 99 26 6b 68 d5   ....s....s..&kh.
+    0090 - af 71 6f e9 18 19 3a 6c-7a e2 85 16 6d eb f0 ac   .qo...:lz...m...
+    00a0 - a9 07 fb 43 98 80 28 12-07 d4 c1 28 76 a4 02 a4   ...C..(....(v...
+    00b0 - 0d a0 55 33 d5 2c f8 da-63 b0 33 47 21 d9 c1 af   ..U3.,..c.3G!...
+    00c0 - 71 cb 05 8a b7 67 bc 75-e7 29 53 03 d0 75 c0 ff   q....g.u.)S..u..
+    00d0 - 16 94 cb 22 52 2b f7 33-dc 23 e1 1c b8 76 5f 59   ..."R+.3.#...v_Y
+
+    Start Time: 1717767231
+    Timeout   : 7200 (sec)
+    Verify return code: 0 (ok)
+    Extended master secret: yes
+---
+HTTP/1.1 400 Bad Request
+Date: Fri, 07 Jun 2024 13:33:52 GMT
+Server: Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1
+Content-Length: 226
+Connection: close
+Content-Type: text/html; charset=iso-8859-1
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>400 Bad Request</title>
+</head><body>
+<h1>Bad Request</h1>
+<p>Your browser sent a request that this server could not understand.<br />
+</p>
+</body></html>
+closed

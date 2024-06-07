@@ -1,0 +1,2 @@
+depth=0 CN = *.example.com
+verify return:1
