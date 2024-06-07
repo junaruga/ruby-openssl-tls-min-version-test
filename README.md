@@ -55,3 +55,37 @@ Failed to load from tls-11.example.com: SSL_connect returned=1 errno=0 peeraddr=
 Loaded from tls-12.example.com
 Loaded from tls-13.example.com
 ```
+
+Run a testing Bash script with the `openssl s_client`. Note that you need to type enter a few times to exit the command for now.
+
+```
+$ ./tmp/test_with_openssl_s_client.sh
++ DOMAINS='
+    tls-10.example.com
+    tls-11.example.com
+    tls-12.example.com
+    tls-13.example.com
+'
++ CA_FILE=tmp/test.crt
++ LOG_DIR=log/openssl-s_client
++ rm -rf log/openssl-s_client
++ mkdir -p log/openssl-s_client
++ for domain in ${DOMAINS}
++ openssl s_client -connect tls-10.example.com:443 -CAfile tmp/test.crt
++ echo 'Failed from tls-10.example.com'
+Failed from tls-10.example.com
++ for domain in ${DOMAINS}
++ openssl s_client -connect tls-11.example.com:443 -CAfile tmp/test.crt
++ echo 'Failed from tls-11.example.com'
+Failed from tls-11.example.com
++ for domain in ${DOMAINS}
++ openssl s_client -connect tls-12.example.com:443 -CAfile tmp/test.crt
+
++ echo 'Passed from tls-12.example.com'
+Passed from tls-12.example.com
++ for domain in ${DOMAINS}
++ openssl s_client -connect tls-13.example.com:443 -CAfile tmp/test.crt
+
++ echo 'Passed from tls-13.example.com'
+Passed from tls-13.example.com
+```
