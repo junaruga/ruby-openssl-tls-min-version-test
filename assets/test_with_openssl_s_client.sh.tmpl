@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -euo pipefail
+
+DOMAINS='
+    tls-10.@DOMAIN@
+    tls-11.@DOMAIN@
+    tls-12.@DOMAIN@
+    tls-13.@DOMAIN@
+'
+CA_FILE='tmp/test.crt'
+LOG_DIR="log/openssl-s_client"
+
+rm -rf "${LOG_DIR}"
+mkdir -p "${LOG_DIR}"
+
+for domain in ${DOMAINS}; do
+    if ! openssl s_client -connect "${domain}:443" -CAfile "${CA_FILE}" \
+        > "${LOG_DIR}/${domain}.stdout.log" \
+        2> "${LOG_DIR}/${domain}.stderr.log"; then
+        echo "Failed from ${domain}"
+    else
+        echo "Passed from ${domain}"
+    fi
+done

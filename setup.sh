@@ -51,6 +51,11 @@ sed -e "s/@DOMAIN@/${SSL_DOMAIN}/g" "${ROOT_DIR}/assets/hosts.tmpl" \
 sed -e "s/@DOMAIN@/${SSL_DOMAIN}/g" "${ROOT_DIR}/assets/test.rb.tmpl" \
     > "${TMP_DIR}/test.rb"
 
+# Generate a testing Bash script with openssl s_client.
+sed -e "s/@DOMAIN@/${SSL_DOMAIN}/g" "${ROOT_DIR}/assets/test_with_openssl_s_client.sh.tmpl" \
+    > "${TMP_DIR}/test_with_openssl_s_client.sh"
+chmod +x "${TMP_DIR}/test_with_openssl_s_client.sh"
+
 # Deploy the SSL certification keys.
 # See the following documents.
 # https://docs.fedoraproject.org/en-US/quick-docs/getting-started-with-apache-http-server/#_securing_apache_httpd
