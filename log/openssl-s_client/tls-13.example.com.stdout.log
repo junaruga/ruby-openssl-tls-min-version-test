@@ -4,36 +4,36 @@ Certificate chain
  0 s:CN = *.example.com
    i:CN = *.example.com
    a:PKEY: rsaEncryption, 4096 (bit); sigalg: RSA-SHA512
-   v:NotBefore: Jun  7 13:33:18 2024 GMT; NotAfter: Jul  7 13:33:18 2024 GMT
+   v:NotBefore: Jun 11 11:57:48 2024 GMT; NotAfter: Jul 11 11:57:48 2024 GMT
 ---
 Server certificate
 -----BEGIN CERTIFICATE-----
-MIIEtzCCAp8CFHxM+nJCmNcT68fcqsMkNBnNxp6JMA0GCSqGSIb3DQEBDQUAMBgx
-FjAUBgNVBAMMDSouZXhhbXBsZS5jb20wHhcNMjQwNjA3MTMzMzE4WhcNMjQwNzA3
-MTMzMzE4WjAYMRYwFAYDVQQDDA0qLmV4YW1wbGUuY29tMIICIjANBgkqhkiG9w0B
-AQEFAAOCAg8AMIICCgKCAgEA4f/+lEgymd3u+vHQc8EpT7xXzYRAnb0FqnlTAA9d
-vFEo6D1qhMRbOqecVvAPyNkfmOp2R0zGAZLuSl65b2ZlIMFj1P6YmV6JvWJe7MRL
-phoK2ZBsdEIrBwjlKzoWZaKeMO2txU256oGr1YJBvU97O9ScUssboD+tLVE4I37i
-QfoNrDALKTMZ4vRRug98ZxCYBp7eK1s+nizU+474jf+Ppr4fdiXn+AtOQAqOkN9k
-4XrWr+f/Uua3t2k3siRAvG3KaQFJisTPWPvitYZS0lR1lGx0BmLU5cTu+G+GDbdM
-rLPL7jdQeBusWt++mPCu8NgAdktRYXm1K34LLyQgkiv8kpb/Tw4CGZaTkBA/0Q+X
-w/IBET0uiG0VPYIDlgWmMEjAqn3EmaH4sxQoqoDfRfiSAqC4cMkozxvyP1XuqgUv
-etkVNLaHnREuoZ0X/mPsltvMLsU10+QG2EqPqtNhXjQRDMyFNrloj0T3VlNYIEKX
-xveyAggtG7Yk567eMeInweXQdWpP0ZEApAPHAxMY/FgllyrSnHXIIwT+JZspNS4y
-ezeP+tOFP1v1iXRJscYeHWCZcShYhb/SetHKUTN7VgIFFqgqTsleS98shHy3Ui7h
-j4RIZYjt+x3mAXUsSgVeJkdA9GRxhnCnhEb9LTbGsb+st9f8+BWIpBguWGQ1ECvu
-Aj0CAwEAATANBgkqhkiG9w0BAQ0FAAOCAgEAK6Pv8ESMcuxWAfFmZVyrOeCVGzV7
-ZSb3W9fD+7LHduTG/Irh0JLmsgKmauaBV+Io3UOrdQKUfeMrxdqCG0Y7lupVuv6S
-x20K40PmPwi0GeZHt0Im9FvCFvuo7YzaPHKx3clA1KEDcxUNlUK8O2rIplvWv05K
-d/2lyszo8l0kodcDNL8vzUQz2xXHKOfPOz/V5be2cS3KpMjeDfTEdGsZrohZu1Fk
-Mqx75N3vav9C6UwPDNKWxq9Tdfi85BsPYG/CZa1IUwzlA9CsUzs+q/QwqD5aL5DC
-v97cB2Ah5O9XPDVCWx6IeFJ10D/edF7qM1N4O2jw5eDng4xQ8JYINZgV8n0ffzej
-RqB+EPk1PKdcnDSG82oDbZA2ruQ9qEcRRk0JFLp6FT9F+BXPOpi9q0ljdOq4LTwC
-ZYtktwGRySiZavB2aVnS79+wQHry7Wlfzak/rx8hi8Nz3anH8VREPLeYJdkpi/eH
-L4DXkI9Yy7mxNUpf3zeE57u3tzn4QoTXfnv4Llq3fkPmPyEW7ISnf3UFcU1tBY8r
-4FLNboFOitj8TSmCD4kjAn80ryFFwY3jFlKYZ4PkU292jkhewuNRKQczjkv6XdAJ
-RxiER9oic90u6n7Xeu+k5yFOEE7v8bPAMuJZCHtja/bOPxWEl2ft6fy7a8pxzLAN
-qE0ZG816/MUuTww=
+MIIEtzCCAp8CFEyaGdxPpoNY4Rz62jUDfOK24yIgMA0GCSqGSIb3DQEBDQUAMBgx
+FjAUBgNVBAMMDSouZXhhbXBsZS5jb20wHhcNMjQwNjExMTE1NzQ4WhcNMjQwNzEx
+MTE1NzQ4WjAYMRYwFAYDVQQDDA0qLmV4YW1wbGUuY29tMIICIjANBgkqhkiG9w0B
+AQEFAAOCAg8AMIICCgKCAgEAwgt4Rb+wZinXrtB3wtv0GAVAXPm9Y+2YkwHdd0qH
+BWLREyuXagXhn5iIvOGhkFe5OaPruKr+VrICzNvR7WYuSOaY6nTwaKJLXko4oH2f
+Aleq0a8L07PcLh5kptCtRRN6dWl/IQwHxjVpDjXGK9KTyvBx1b8Am7jiRb6QU65Q
+L8pokv5uHW9HxysGNCR0B6Sk4hZo473oLQzrOP0ZaPnhGQ6a3FPmPEH1ZnJoGWXg
+1reIruZpOv/VI7VBBWXsRH0/KQQwdObzb+JG0aT5sAT7BIgLjVFVvHZXHbxEQkRr
+72oArwIh5G9HSI4n6AWaPFutPnoYPlGwZ8oDC73Gg5/RhHT5cdbpg6FSgmdjw4aN
+aQ+bnjDUcPJMnWZVhs2oWupH8lEhkoTxOeL2x+PCEWDgjjVfnn9/4k7j1T7zmT7X
+nbIyBblDckt6tVrpQ31xR7XQEDvsYTBkY+kUnESUFky6GnjS9QUdvxWE+srVo0vv
+u8jlwCv0wRhJWVN57xBzYRho2UYB9aWH+cV0TcUp5Ic2mdJbMnRH7mk0VQEPS6Km
+k3IpECe3RgwVMeb/dst2Ppq9ZU8cNTA1LccNZNeDvJ042E5tg9VLtitkskIDqOfx
+bOZIiybV3raab63P4IfD15ExkE21ut3xjh3y5hevCi8FLP1d3e+yxLPQNIQNfYvz
+jSkCAwEAATANBgkqhkiG9w0BAQ0FAAOCAgEAY4ofAE0LS/nldp4iMttP5IQK9N9A
+N2g/TnEywFRkG9Ckrg+SgagK6baTG5AEDgDNnsu+oTbnWp6Sz4gnMX8sBysSzK1G
+RoujiaX6gJFrK6AbJkKXd+fQryfDMC299/oufmDhwx2IhxVqV26940n/aIv4nNTx
+prqiUwgvaX+5lAzwwcjBhbeDxyLW2TUFdU3KTu7G0TOda314gi+hEUroofavlSXE
+wc1ca7nAAnqWBRjUbqTZXuz/JeG+QDo7k9AzEiV5mJosin+SBWrhkC+W2OcJqOSu
+WdJ9mTBc7npXKz3IqtdqnWjDQ97ibzsiOxfUzTBmxi04OY3Uj6/p9x6fmw2/1zks
+zXrgVOWuXbpCnifqZ85NG8a2ILNu2sksRveK6IuA/Xn7y9EIyZE4tYVuZzKh7r8i
+kGRyTU6rQGGpkHyeCEhQn1UCRXUK1p5whD9SzdUB7UVsXuxS2cLZ/a1xsYooQRxn
+R9rXEBZPw4Yq0CBYgu16ctCQl/i3XM7v142ty4zUPRjFnhL5a9QdIV9Grf17Oxb8
+RW3gPm8x1UrbJcljCTdUzCbpgSBKnuZ2QqhTU5DnDPQAgR0dkOmHvBbByzmLTFVl
+lG8noEzbDBthYR/aWiiKW3wvgFXQFwGnctYQywZblE1MgTbxA+MRZF65fZ/4dVHS
+pWKwuwi5bVZ7Og4=
 -----END CERTIFICATE-----
 subject=CN = *.example.com
 issuer=CN = *.example.com
@@ -43,7 +43,7 @@ Peer signing digest: SHA256
 Peer signature type: RSA-PSS
 Server Temp Key: X25519, 253 bits
 ---
-SSL handshake has read 2027 bytes and written 428 bytes
+SSL handshake has read 2027 bytes and written 432 bytes
 Verification: OK
 ---
 New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
@@ -55,93 +55,3 @@ No ALPN negotiated
 Early data was not sent
 Verify return code: 0 (ok)
 ---
-HTTP/1.1 400 Bad Request
-Date: Fri, 07 Jun 2024 13:33:52 GMT
-Server: Apache/2.4.59 (Fedora Linux) OpenSSL/3.1.1
-Content-Length: 226
-Connection: close
-Content-Type: text/html; charset=iso-8859-1
-
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html><head>
-<title>400 Bad Request</title>
-</head><body>
-<h1>Bad Request</h1>
-<p>Your browser sent a request that this server could not understand.<br />
-</p>
-</body></html>
----
-Post-Handshake New Session Ticket arrived:
-SSL-Session:
-    Protocol  : TLSv1.3
-    Cipher    : TLS_AES_256_GCM_SHA384
-    Session-ID: 1CAD428910DF1F827254B5A31BF8907589D103C14F3BE38A2F8DECDD0569B9BE
-    Session-ID-ctx: 
-    Resumption PSK: 2D95FE3D2A8797CB448B43A46236D337BECE4B6EF32082EEB42DD473D304DDF413A9579545C3BFCCEE9502ECE424D6E7
-    PSK identity: None
-    PSK identity hint: None
-    SRP username: None
-    TLS session ticket lifetime hint: 300 (seconds)
-    TLS session ticket:
-    0000 - 1c ca d7 0e cf 6c 16 9b-a0 ce 09 a7 0f 56 45 b7   .....l.......VE.
-    0010 - 67 c4 59 6f 31 4a 4a e1-7d 5f e5 1d b6 b9 65 49   g.Yo1JJ.}_....eI
-    0020 - f6 98 bf 7a e4 9f 22 07-a6 6d fc b8 e7 1d 0a 28   ...z.."..m.....(
-    0030 - ea fc d5 ad c5 b3 4f 38-3f b1 ba 7f d9 59 f9 55   ......O8?....Y.U
-    0040 - 48 68 4f 9a e8 c0 68 2f-76 55 c9 e9 96 7b 62 82   HhO...h/vU...{b.
-    0050 - 2d ea 34 57 bc f8 8f 95-56 2d 99 03 06 bf ea f8   -.4W....V-......
-    0060 - 66 0b 8e 6c dc a4 5b 12-55 5e 7d 75 cf 3f 1a 0b   f..l..[.U^}u.?..
-    0070 - 02 8d c5 0a 31 63 c0 ec-a4 43 d9 92 84 0f 8b 6c   ....1c...C.....l
-    0080 - c3 e4 66 b8 73 6e 48 4a-27 cd 70 4b c1 29 26 5c   ..f.snHJ'.pK.)&\
-    0090 - 2e 44 d6 f0 9e 3c 27 8e-5b 77 1e f6 50 b4 8a 65   .D...<'.[w..P..e
-    00a0 - d9 20 ea 05 51 58 c2 42-88 36 2e c1 8d c0 70 2b   . ..QX.B.6....p+
-    00b0 - 92 3d f3 f0 6f fc 9a 1a-8f c3 19 d0 ef f3 dc 20   .=..o.......... 
-    00c0 - 1b 45 7e 70 73 ef 6c 09-60 3b 4b cd 4a 30 06 7c   .E~ps.l.`;K.J0.|
-    00d0 - bb 97 9d 8a 0a 7a 37 40-ab 7c cf 8d 78 3c 0d 00   .....z7@.|..x<..
-    00e0 - d6 e2 7b 36 76 cf 65 71-e8 f7 17 35 98 e1 ec 76   ..{6v.eq...5...v
-    00f0 - 7a b1 45 58 31 f5 2d de-2e 20 3c 78 3e 14 c8 dd   z.EX1.-.. <x>...
-
-    Start Time: 1717767232
-    Timeout   : 7200 (sec)
-    Verify return code: 0 (ok)
-    Extended master secret: no
-    Max Early Data: 0
----
-read R BLOCK
----
-Post-Handshake New Session Ticket arrived:
-SSL-Session:
-    Protocol  : TLSv1.3
-    Cipher    : TLS_AES_256_GCM_SHA384
-    Session-ID: 8099AE743AA044F66967AB2A82B41787FD851DDBF08110B28077B3A8B71E68EA
-    Session-ID-ctx: 
-    Resumption PSK: 19B04046EF2DB1B15BF1AFC28C91F0DB40F01D34EFE204F7E673708262F412B4201ED9C1BFD3FAB2309CA3738DC9339F
-    PSK identity: None
-    PSK identity hint: None
-    SRP username: None
-    TLS session ticket lifetime hint: 300 (seconds)
-    TLS session ticket:
-    0000 - 1c ca d7 0e cf 6c 16 9b-a0 ce 09 a7 0f 56 45 b7   .....l.......VE.
-    0010 - 59 c0 14 ea bb 90 2d 1a-6a be a0 d8 1a 39 c4 06   Y.....-.j....9..
-    0020 - 7e cd e7 e2 9e cb 97 8b-59 9a c3 50 74 df a1 60   ~.......Y..Pt..`
-    0030 - 0a 7b eb bf 3e c2 2d d5-0f ef df 40 96 d1 41 be   .{..>.-....@..A.
-    0040 - 98 70 8d a7 23 57 e0 c3-1d 16 ef 74 ec b8 44 47   .p..#W.....t..DG
-    0050 - ad 74 83 09 e6 3c f6 8d-27 30 fe 43 69 38 18 24   .t...<..'0.Ci8.$
-    0060 - 00 0c 2d 59 a4 ac 4f cf-ab 7a aa 08 54 aa bd ad   ..-Y..O..z..T...
-    0070 - 1c 77 5b f0 87 06 82 00-43 b4 79 50 cd bc 5a f1   .w[.....C.yP..Z.
-    0080 - d8 8d 0d 2d 2c 8e e2 f6-87 1c 9a 32 e2 7d a4 7a   ...-,......2.}.z
-    0090 - ca e0 b8 1d b0 ac 55 56-56 e3 43 fa 0c 83 f0 43   ......UVV.C....C
-    00a0 - e6 06 c3 ba e6 bf c3 50-6f 65 b7 2a 3c 1f f0 86   .......Poe.*<...
-    00b0 - f5 ac ff 43 d3 19 34 58-3d 7d 78 24 e7 6b a2 43   ...C..4X=}x$.k.C
-    00c0 - 63 5b 61 58 b7 73 e1 cb-b9 ea 96 d8 5a fb 33 f2   c[aX.s......Z.3.
-    00d0 - 34 fc 81 d9 5f 2c 02 48-b1 97 f3 65 9a 78 aa 32   4..._,.H...e.x.2
-    00e0 - 06 49 9f 50 ae 87 d4 1a-50 73 b9 85 43 f8 68 4b   .I.P....Ps..C.hK
-    00f0 - 3b c0 44 a1 41 6c 9f 38-b1 ae 67 7c 22 51 81 76   ;.D.Al.8..g|"Q.v
-
-    Start Time: 1717767232
-    Timeout   : 7200 (sec)
-    Verify return code: 0 (ok)
-    Extended master secret: no
-    Max Early Data: 0
----
-read R BLOCK
-closed

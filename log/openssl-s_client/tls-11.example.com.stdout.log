@@ -1,17 +1,85 @@
 CONNECTED(00000003)
 ---
-no peer certificate available
+Certificate chain
+ 0 s:CN = *.example.com
+   i:CN = *.example.com
+   a:PKEY: rsaEncryption, 4096 (bit); sigalg: RSA-SHA512
+   v:NotBefore: Jun 11 11:57:48 2024 GMT; NotAfter: Jul 11 11:57:48 2024 GMT
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIEtzCCAp8CFEyaGdxPpoNY4Rz62jUDfOK24yIgMA0GCSqGSIb3DQEBDQUAMBgx
+FjAUBgNVBAMMDSouZXhhbXBsZS5jb20wHhcNMjQwNjExMTE1NzQ4WhcNMjQwNzEx
+MTE1NzQ4WjAYMRYwFAYDVQQDDA0qLmV4YW1wbGUuY29tMIICIjANBgkqhkiG9w0B
+AQEFAAOCAg8AMIICCgKCAgEAwgt4Rb+wZinXrtB3wtv0GAVAXPm9Y+2YkwHdd0qH
+BWLREyuXagXhn5iIvOGhkFe5OaPruKr+VrICzNvR7WYuSOaY6nTwaKJLXko4oH2f
+Aleq0a8L07PcLh5kptCtRRN6dWl/IQwHxjVpDjXGK9KTyvBx1b8Am7jiRb6QU65Q
+L8pokv5uHW9HxysGNCR0B6Sk4hZo473oLQzrOP0ZaPnhGQ6a3FPmPEH1ZnJoGWXg
+1reIruZpOv/VI7VBBWXsRH0/KQQwdObzb+JG0aT5sAT7BIgLjVFVvHZXHbxEQkRr
+72oArwIh5G9HSI4n6AWaPFutPnoYPlGwZ8oDC73Gg5/RhHT5cdbpg6FSgmdjw4aN
+aQ+bnjDUcPJMnWZVhs2oWupH8lEhkoTxOeL2x+PCEWDgjjVfnn9/4k7j1T7zmT7X
+nbIyBblDckt6tVrpQ31xR7XQEDvsYTBkY+kUnESUFky6GnjS9QUdvxWE+srVo0vv
+u8jlwCv0wRhJWVN57xBzYRho2UYB9aWH+cV0TcUp5Ic2mdJbMnRH7mk0VQEPS6Km
+k3IpECe3RgwVMeb/dst2Ppq9ZU8cNTA1LccNZNeDvJ042E5tg9VLtitkskIDqOfx
+bOZIiybV3raab63P4IfD15ExkE21ut3xjh3y5hevCi8FLP1d3e+yxLPQNIQNfYvz
+jSkCAwEAATANBgkqhkiG9w0BAQ0FAAOCAgEAY4ofAE0LS/nldp4iMttP5IQK9N9A
+N2g/TnEywFRkG9Ckrg+SgagK6baTG5AEDgDNnsu+oTbnWp6Sz4gnMX8sBysSzK1G
+RoujiaX6gJFrK6AbJkKXd+fQryfDMC299/oufmDhwx2IhxVqV26940n/aIv4nNTx
+prqiUwgvaX+5lAzwwcjBhbeDxyLW2TUFdU3KTu7G0TOda314gi+hEUroofavlSXE
+wc1ca7nAAnqWBRjUbqTZXuz/JeG+QDo7k9AzEiV5mJosin+SBWrhkC+W2OcJqOSu
+WdJ9mTBc7npXKz3IqtdqnWjDQ97ibzsiOxfUzTBmxi04OY3Uj6/p9x6fmw2/1zks
+zXrgVOWuXbpCnifqZ85NG8a2ILNu2sksRveK6IuA/Xn7y9EIyZE4tYVuZzKh7r8i
+kGRyTU6rQGGpkHyeCEhQn1UCRXUK1p5whD9SzdUB7UVsXuxS2cLZ/a1xsYooQRxn
+R9rXEBZPw4Yq0CBYgu16ctCQl/i3XM7v142ty4zUPRjFnhL5a9QdIV9Grf17Oxb8
+RW3gPm8x1UrbJcljCTdUzCbpgSBKnuZ2QqhTU5DnDPQAgR0dkOmHvBbByzmLTFVl
+lG8noEzbDBthYR/aWiiKW3wvgFXQFwGnctYQywZblE1MgTbxA+MRZF65fZ/4dVHS
+pWKwuwi5bVZ7Og4=
+-----END CERTIFICATE-----
+subject=CN = *.example.com
+issuer=CN = *.example.com
 ---
 No client certificate CA names sent
+Peer signing digest: MD5-SHA1
+Peer signature type: RSA
+Server Temp Key: X25519, 253 bits
 ---
-SSL handshake has read 7 bytes and written 348 bytes
+SSL handshake has read 2190 bytes and written 473 bytes
 Verification: OK
 ---
-New, (NONE), Cipher is (NONE)
-This TLS version forbids renegotiation.
+New, TLSv1.0, Cipher is ECDHE-RSA-AES256-SHA
+Server public key is 4096 bit
+Secure Renegotiation IS supported
 Compression: NONE
 Expansion: NONE
 No ALPN negotiated
-Early data was not sent
-Verify return code: 0 (ok)
+SSL-Session:
+    Protocol  : TLSv1.1
+    Cipher    : ECDHE-RSA-AES256-SHA
+    Session-ID: B30FF532812132A0119C662BB7EC54BC170D69D80DAB3B5F63059ECB9CF231ED
+    Session-ID-ctx: 
+    Master-Key: 0E365905772004041C3B32641A2DA1EC369E532EA5347ED1C266D3C8F5823D4AD8470DD1EBC073265AC140FA47F721C2
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 300 (seconds)
+    TLS session ticket:
+    0000 - 6c 47 cf ca 9a 70 b9 f8-16 db 1f 77 03 d0 1b 52   lG...p.....w...R
+    0010 - 73 e6 d0 b7 4b 95 ed 5e-53 4e 2c c2 db 0b 2a c1   s...K..^SN,...*.
+    0020 - 23 cd e9 08 27 d7 0f bd-aa 23 45 5a 18 ca 66 05   #...'....#EZ..f.
+    0030 - c5 ac 71 3b 1f 80 d2 3c-4e 42 72 6d ec 85 66 75   ..q;...<NBrm..fu
+    0040 - aa dd df d4 a0 d1 a4 7a-a0 ae 09 2c 13 00 b6 ee   .......z...,....
+    0050 - 62 b9 f7 a2 0f 5c dd a2-cb ee d7 bd 3f 06 f9 42   b....\......?..B
+    0060 - c4 ab 94 24 60 e2 20 5d-53 5e 01 a4 c4 79 ae 5c   ...$`. ]S^...y.\
+    0070 - 75 7f 55 e2 8d 98 51 a8-4f c1 4e 66 d0 56 f2 c3   u.U...Q.O.Nf.V..
+    0080 - 18 b7 48 c8 cb 4c c4 88-99 fb 1c 25 d6 36 e8 44   ..H..L.....%.6.D
+    0090 - 4d 01 2d cc 8f 4b 29 9c-e0 09 ae 6b e2 94 bb 90   M.-..K)....k....
+    00a0 - 2a fc df a9 b8 e7 f5 12-75 9b 0b db 13 01 3d e7   *.......u.....=.
+    00b0 - 56 46 ea bd 02 22 c1 26-83 95 ff 8e c7 bb f6 d9   VF...".&........
+    00c0 - 3a f5 6a 6c 95 5c 30 9e-5b 90 93 d8 31 e4 29 c3   :.jl.\0.[...1.).
+    00d0 - 91 f0 48 65 90 bf 1f fc-31 c1 ad 7b 56 45 be f0   ..He....1..{VE..
+
+    Start Time: 1718107076
+    Timeout   : 7200 (sec)
+    Verify return code: 0 (ok)
+    Extended master secret: yes
 ---

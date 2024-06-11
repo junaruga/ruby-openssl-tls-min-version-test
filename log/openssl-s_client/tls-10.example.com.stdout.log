@@ -1,17 +1,85 @@
 CONNECTED(00000003)
 ---
-no peer certificate available
+Certificate chain
+ 0 s:CN = *.example.com
+   i:CN = *.example.com
+   a:PKEY: rsaEncryption, 4096 (bit); sigalg: RSA-SHA512
+   v:NotBefore: Jun 11 11:57:48 2024 GMT; NotAfter: Jul 11 11:57:48 2024 GMT
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIEtzCCAp8CFEyaGdxPpoNY4Rz62jUDfOK24yIgMA0GCSqGSIb3DQEBDQUAMBgx
+FjAUBgNVBAMMDSouZXhhbXBsZS5jb20wHhcNMjQwNjExMTE1NzQ4WhcNMjQwNzEx
+MTE1NzQ4WjAYMRYwFAYDVQQDDA0qLmV4YW1wbGUuY29tMIICIjANBgkqhkiG9w0B
+AQEFAAOCAg8AMIICCgKCAgEAwgt4Rb+wZinXrtB3wtv0GAVAXPm9Y+2YkwHdd0qH
+BWLREyuXagXhn5iIvOGhkFe5OaPruKr+VrICzNvR7WYuSOaY6nTwaKJLXko4oH2f
+Aleq0a8L07PcLh5kptCtRRN6dWl/IQwHxjVpDjXGK9KTyvBx1b8Am7jiRb6QU65Q
+L8pokv5uHW9HxysGNCR0B6Sk4hZo473oLQzrOP0ZaPnhGQ6a3FPmPEH1ZnJoGWXg
+1reIruZpOv/VI7VBBWXsRH0/KQQwdObzb+JG0aT5sAT7BIgLjVFVvHZXHbxEQkRr
+72oArwIh5G9HSI4n6AWaPFutPnoYPlGwZ8oDC73Gg5/RhHT5cdbpg6FSgmdjw4aN
+aQ+bnjDUcPJMnWZVhs2oWupH8lEhkoTxOeL2x+PCEWDgjjVfnn9/4k7j1T7zmT7X
+nbIyBblDckt6tVrpQ31xR7XQEDvsYTBkY+kUnESUFky6GnjS9QUdvxWE+srVo0vv
+u8jlwCv0wRhJWVN57xBzYRho2UYB9aWH+cV0TcUp5Ic2mdJbMnRH7mk0VQEPS6Km
+k3IpECe3RgwVMeb/dst2Ppq9ZU8cNTA1LccNZNeDvJ042E5tg9VLtitkskIDqOfx
+bOZIiybV3raab63P4IfD15ExkE21ut3xjh3y5hevCi8FLP1d3e+yxLPQNIQNfYvz
+jSkCAwEAATANBgkqhkiG9w0BAQ0FAAOCAgEAY4ofAE0LS/nldp4iMttP5IQK9N9A
+N2g/TnEywFRkG9Ckrg+SgagK6baTG5AEDgDNnsu+oTbnWp6Sz4gnMX8sBysSzK1G
+RoujiaX6gJFrK6AbJkKXd+fQryfDMC299/oufmDhwx2IhxVqV26940n/aIv4nNTx
+prqiUwgvaX+5lAzwwcjBhbeDxyLW2TUFdU3KTu7G0TOda314gi+hEUroofavlSXE
+wc1ca7nAAnqWBRjUbqTZXuz/JeG+QDo7k9AzEiV5mJosin+SBWrhkC+W2OcJqOSu
+WdJ9mTBc7npXKz3IqtdqnWjDQ97ibzsiOxfUzTBmxi04OY3Uj6/p9x6fmw2/1zks
+zXrgVOWuXbpCnifqZ85NG8a2ILNu2sksRveK6IuA/Xn7y9EIyZE4tYVuZzKh7r8i
+kGRyTU6rQGGpkHyeCEhQn1UCRXUK1p5whD9SzdUB7UVsXuxS2cLZ/a1xsYooQRxn
+R9rXEBZPw4Yq0CBYgu16ctCQl/i3XM7v142ty4zUPRjFnhL5a9QdIV9Grf17Oxb8
+RW3gPm8x1UrbJcljCTdUzCbpgSBKnuZ2QqhTU5DnDPQAgR0dkOmHvBbByzmLTFVl
+lG8noEzbDBthYR/aWiiKW3wvgFXQFwGnctYQywZblE1MgTbxA+MRZF65fZ/4dVHS
+pWKwuwi5bVZ7Og4=
+-----END CERTIFICATE-----
+subject=CN = *.example.com
+issuer=CN = *.example.com
 ---
 No client certificate CA names sent
+Peer signing digest: MD5-SHA1
+Peer signature type: RSA
+Server Temp Key: X25519, 253 bits
 ---
-SSL handshake has read 7 bytes and written 348 bytes
+SSL handshake has read 2174 bytes and written 457 bytes
 Verification: OK
 ---
-New, (NONE), Cipher is (NONE)
-This TLS version forbids renegotiation.
+New, TLSv1.0, Cipher is ECDHE-RSA-AES256-SHA
+Server public key is 4096 bit
+Secure Renegotiation IS supported
 Compression: NONE
 Expansion: NONE
 No ALPN negotiated
-Early data was not sent
-Verify return code: 0 (ok)
+SSL-Session:
+    Protocol  : TLSv1
+    Cipher    : ECDHE-RSA-AES256-SHA
+    Session-ID: 87CF771A65D77F2D74ECF2BA65A5E236ADBBD8E463D886A0E1E24D4C558788DA
+    Session-ID-ctx: 
+    Master-Key: 89BC62C32F07295A544E70648297527E1FF7E84F789BEB070BF88509A07255AEB98328DF73FA6AD5661717085F6C2D0A
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 300 (seconds)
+    TLS session ticket:
+    0000 - 6c 47 cf ca 9a 70 b9 f8-16 db 1f 77 03 d0 1b 52   lG...p.....w...R
+    0010 - e1 6c bf 11 65 13 d5 44-2d 57 34 b3 7f d8 a0 99   .l..e..D-W4.....
+    0020 - 8b 81 d0 d7 3c 8b ba 27-3a 1b f4 d0 ce 87 25 d0   ....<..':.....%.
+    0030 - 26 ff 32 d0 3d f4 28 ea-c6 b2 8b 98 aa d0 d6 a1   &.2.=.(.........
+    0040 - 04 50 b6 c4 ef 4d 20 1c-a6 5a 03 2e 10 4d 87 80   .P...M ..Z...M..
+    0050 - 01 a6 43 00 3b 29 5a 1f-e8 26 79 22 de 1b fb 84   ..C.;)Z..&y"....
+    0060 - c6 25 1e 55 1f 22 be cc-12 75 6c 97 2f c6 35 fc   .%.U."...ul./.5.
+    0070 - 60 db 7a 61 e7 2f 1b 2a-e0 23 1b e8 18 ac a2 a2   `.za./.*.#......
+    0080 - 2d 77 ce f3 53 12 6b 1b-ca bc 97 49 3a 6b 90 26   -w..S.k....I:k.&
+    0090 - dc 17 4e 23 7e c5 53 05-3a f7 ef 9b bf fc 9d d2   ..N#~.S.:.......
+    00a0 - eb 24 f2 2e c7 66 a3 e9-d0 0e e6 08 53 65 b3 de   .$...f......Se..
+    00b0 - fb f4 c5 bf 2d f1 03 3b-b0 27 e7 1d d0 d2 3c e5   ....-..;.'....<.
+    00c0 - ce f8 fa 1b fc d8 28 e5-e0 bf 41 bc e1 5f c5 07   ......(...A.._..
+    00d0 - d9 3f 58 4d 5d 07 bd 69-5d 2b 84 49 a5 ac 8e 56   .?XM]..i]+.I...V
+
+    Start Time: 1718107076
+    Timeout   : 7200 (sec)
+    Verify return code: 0 (ok)
+    Extended master secret: yes
 ---
