@@ -206,3 +206,50 @@ Passed from tls-12.example.com
 + echo 'Passed from tls-13.example.com'
 Passed from tls-13.example.com
 ```
+### Test with upstream OpenSSL openssl s_client
+
+The following result of the `tmp/test_with_openssl_s_client.sh` shows the upstream OpenSSL has an internal minimal TLS version setting as TLS 1.2.
+
+```
+$ grep '^TLS.Min' /etc/crypto-policies/back-ends/opensslcnf.config
+TLS.MinProtocol = TLSv1.3
+
+$ ~/.local/openssl-3.3.0-dev-fips-debug-1f03d33ef5/bin/openssl ciphers -v | awk '{print $2}' | sort | uniq
+SSLv3
+TLSv1
+TLSv1.2
+TLSv1.3
+
+$ OPENSSL_DIR="$HOME/.local/openssl-3.3.0-dev-fips-debug-1f03d33ef5" \
+  tmp/test_with_openssl_s_client.sh
++ DOMAINS='
+    tls-10.example.com
+    tls-11.example.com
+    tls-12.example.com
+    tls-13.example.com
+'
++ CA_FILE=tmp/test.crt
++ LOG_DIR=log/openssl-s_client
++ OPENSSL_DIR=/home/jaruga/.local/openssl-3.3.0-dev-fips-debug-1f03d33ef5
++ /home/jaruga/.local/openssl-3.3.0-dev-fips-debug-1f03d33ef5=
+tmp/test_with_openssl_s_client.sh: line 15: /home/jaruga/.local/openssl-3.3.0-dev-fips-debug-1f03d33ef5=: No such file or directory
++ OPENSSL_CLI=/home/jaruga/.local/openssl-3.3.0-dev-fips-debug-1f03d33ef5/bin/openssl
++ rm -rf log/openssl-s_client
++ mkdir -p log/openssl-s_client
++ for domain in ${DOMAINS}
++ /home/jaruga/.local/openssl-3.3.0-dev-fips-debug-1f03d33ef5/bin/openssl s_client -connect tls-10.example.com:443 -CAfile tmp/test.crt
++ echo 'Failed from tls-10.example.com'
+Failed from tls-10.example.com
++ for domain in ${DOMAINS}
++ /home/jaruga/.local/openssl-3.3.0-dev-fips-debug-1f03d33ef5/bin/openssl s_client -connect tls-11.example.com:443 -CAfile tmp/test.crt
++ echo 'Failed from tls-11.example.com'
+Failed from tls-11.example.com
++ for domain in ${DOMAINS}
++ /home/jaruga/.local/openssl-3.3.0-dev-fips-debug-1f03d33ef5/bin/openssl s_client -connect tls-12.example.com:443 -CAfile tmp/test.crt
++ echo 'Passed from tls-12.example.com'
+Passed from tls-12.example.com
++ for domain in ${DOMAINS}
++ /home/jaruga/.local/openssl-3.3.0-dev-fips-debug-1f03d33ef5/bin/openssl s_client -connect tls-13.example.com:443 -CAfile tmp/test.crt
++ echo 'Passed from tls-13.example.com'
+Passed from tls-13.example.com
+```
