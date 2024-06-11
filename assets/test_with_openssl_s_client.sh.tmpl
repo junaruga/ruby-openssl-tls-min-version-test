@@ -11,11 +11,19 @@ DOMAINS='
 CA_FILE='tmp/test.crt'
 LOG_DIR="log/openssl-s_client"
 
+OPENSSL_DIR="${OPENSSL_DIR:-}"
+if "${OPENSSL_DIR}"=''; then
+    OPENSSL_CLI='openssl'
+else
+    OPENSSL_CLI="${OPENSSL_DIR}/bin/openssl"
+fi
+
 rm -rf "${LOG_DIR}"
 mkdir -p "${LOG_DIR}"
 
 for domain in ${DOMAINS}; do
-    if ! openssl s_client -connect "${domain}:443" -CAfile "${CA_FILE}" \
+    if ! "${OPENSSL_CLI}" s_client -connect "${domain}:443" \
+        -CAfile "${CA_FILE}" \
         < /dev/null \
         > "${LOG_DIR}/${domain}.stdout.log" \
         2> "${LOG_DIR}/${domain}.stderr.log"; then
