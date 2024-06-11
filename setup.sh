@@ -17,6 +17,8 @@ INSTALLED_RPM_PKGS="
     httpd \
     mod_ssl
 "
+CRYPTO_POLICY="$(update-crypto-policies --show)"
+CRYPTO_POLICY_DIR="/usr/share/crypto-policies/${CRYPTO_POLICY}"
 TIMESTAMP_NOW="$(date "+%Y%m%d%H%M%S")"
 
 rm -rf "${TMP_DIR}"
@@ -77,6 +79,16 @@ if ! grep -E "tls-[0-9]+.${SSL_DOMAIN}" /etc/hosts; then
     # Append the testing domains.
     cat "${TMP_DIR}/hosts" | sudo tee -a /etc/hosts
     cat /etc/hosts
+fi
+
+# At the SECLEVEL 1, OpenSSL no longer considers the SHA1-MD5 digest and
+# TLS < 1.2. The signatures using SHA1 and MD5 are also forbidden at this level
+# as they have less than 80 security bits. Additionally, SSLv3, TLS 1.0,
+# TLS 1.1 and DTLS 1.0 are all disabled at this level.
+if ! grep 'SECLEVEL=0' "${CRYPTO_POLICY_DIR}/opensslcnf.txt"; then
+    # Backup the opensslcnf.txt file just in case.
+    sudo cp -p "${CRYPTO_POLICY_DIR}/opensslcnf.txt" "${CRYPTO_POLICY_DIR}/opensslcnf.txt.${TIMESTAMP_NOW}"
+    sudo sed -i -e 's/SECLEVEL=[1-9]/SECLEVEL=0/' "${CRYPTO_POLICY_DIR}/opensslcnf.txt"
 fi
 
 # Run HTTPD.

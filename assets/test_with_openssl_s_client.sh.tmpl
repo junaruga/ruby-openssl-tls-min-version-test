@@ -16,6 +16,7 @@ mkdir -p "${LOG_DIR}"
 
 for domain in ${DOMAINS}; do
     if ! openssl s_client -connect "${domain}:443" -CAfile "${CA_FILE}" \
+        < /dev/null \
         > "${LOG_DIR}/${domain}.stdout.log" \
         2> "${LOG_DIR}/${domain}.stderr.log"; then
         echo "Failed from ${domain}"
