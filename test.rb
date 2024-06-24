@@ -1,28 +1,28 @@
 require 'net/http'
 
 DOMAIN = 'example.com'
-
-hosts = [
-  "tls-10.#{DOMAIN}",
-  "tls-11.#{DOMAIN}",
-  "tls-12.#{DOMAIN}",
-  "tls-13.#{DOMAIN}",
-]
+CONFIG_ITEMS = [
+  { host: "tls-12.#{DOMAIN}", port: 44_333 },
+  { host: "tls-13.#{DOMAIN}", port: 44_334 }
+].freeze
 
 ca_file = 'tmp/test.crt'
 
-hosts.each do |host|
+CONFIG_ITEMS.each do |item|
   # require 'debug'
   # binding.break
 
-  uri = URI("https://#{host}")
+  uri = URI("https://#{item[:host]}")
   begin
-    Net::HTTP.start(host, 443, use_ssl: true, ca_file: ca_file) do |http|
+    Net::HTTP.start(item[:host],
+                    item[:port],
+                    use_ssl: true,
+                    ca_file: ca_file) do |http|
       http.get(uri)
     end
   rescue StandardError => e
-    puts "Failed to load from #{host}: #{e}"
+    puts "Failed to load from #{item[:host]}: #{e}"
   else
-    puts "Loaded from #{host}"
+    puts "Loaded from #{item[:host]}"
   end
 end
