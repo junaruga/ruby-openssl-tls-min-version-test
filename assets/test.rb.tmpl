@@ -1,23 +1,28 @@
+# frozen_string_literal: true
+
 require 'net/http'
 
-domains = [
-  'tls-10.@DOMAIN@',
-  'tls-11.@DOMAIN@',
-  'tls-12.@DOMAIN@',
-  'tls-13.@DOMAIN@',
-]
+CONFIG_ITEMS = [
+  { domain: 'tls-10.@DOMAIN@', port: 44_331 },
+  { domain: 'tls-11.@DOMAIN@', port: 44_332 },
+  { domain: 'tls-12.@DOMAIN@', port: 44_333 },
+  { domain: 'tls-13.@DOMAIN@', port: 44_334 }
+].freeze
 
 ca_file = 'tmp/test.crt'
 
-domains.each do |domain|
-  uri = URI("https://#{domain}")
+CONFIG_ITEMS.each do |item|
+  uri = URI("https://#{item[:domain]}")
   begin
-    Net::HTTP.start(domain, 443, use_ssl: true, ca_file: ca_file) do |http|
+    Net::HTTP.start(item[:domain],
+                    item[:port],
+                    use_ssl: true,
+                    ca_file: ca_file) do |http|
       http.get(uri)
     end
   rescue StandardError => e
-    puts "Failed to load from #{domain}: #{e}"
+    puts "Failed to load from #{item[:domain]}: #{e}"
   else
-    puts "Loaded from #{domain}"
+    puts "Loaded from #{item[:domain]}"
   end
 end
