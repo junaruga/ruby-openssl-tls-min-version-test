@@ -5,6 +5,10 @@
 
 set -euxo pipefail
 
+# Custom
+#
+# Upstream OpenSSL directory.
+OPENSSL_DIR="${HOME}/.local/openssl-3.4.0-dev-fips-debug-d550d2aae5"
 # This domaiin is used for SSL cert keys.
 # SSL_DOMAIN=${SSL_DOMAIN:-fedoraproject.org}
 SSL_DOMAIN=${SSL_DOMAIN:-example.com}
@@ -12,16 +16,16 @@ SSL_DOMAIN=${SSL_DOMAIN:-example.com}
 ROOT_DIR="$(dirname "${0}")"
 TMP_DIR="${ROOT_DIR}/tmp"
 LOG_DIR="log/openssl-s_server"
-INSTALLED_RPM_PKGS="
-    openssl \
-    openssl-devel \
-"
+# INSTALLED_RPM_PKGS="
+#     openssl \
+#     openssl-devel \
+# "
 CRYPTO_POLICY="$(update-crypto-policies --show)"
 CRYPTO_POLICY_DIR="/usr/share/crypto-policies/${CRYPTO_POLICY}"
 TIMESTAMP_NOW="$(date "+%Y%m%d%H%M%S")"
 
 function start_ssl_servers {
-    openssl s_server \
+    "${OPENSSL_DIR}/bin/openssl" s_server \
         -port 44333 \
         -servername "tls-12.${SSL_DOMAIN}" \
         -tls1_2 \
@@ -30,7 +34,7 @@ function start_ssl_servers {
         > "${LOG_DIR}/tls-12.${SSL_DOMAIN}.stdout.log" \
         2> "${LOG_DIR}/tls-12.${SSL_DOMAIN}.stderr.log" \
         &
-    openssl s_server \
+    "${OPENSSL_DIR}/bin/openssl" s_server \
         -port 44334 \
         -servername "tls-13.${SSL_DOMAIN}" \
         -tls1_3 \
@@ -61,21 +65,21 @@ rm -rf "${LOG_DIR}"
 mkdir -p "${LOG_DIR}"
 
 # Install necessary RPM packages.
-if ! rpm -q ${INSTALLED_RPM_PKGS} > /dev/null; then
-    sudo dnf -y install ${INSTALLED_RPM_PKGS}
-    # sudo dnf clean all
-fi
+# if ! rpm -q ${INSTALLED_RPM_PKGS} > /dev/null; then
+#     sudo dnf -y install ${INSTALLED_RPM_PKGS}
+#     # sudo dnf clean all
+# fi
 
 # Generate certification keys.
 command -v openssl
-openssl version
+"${OPENSSL_DIR}/bin/openssl" version
 
-openssl genrsa -out "${TMP_DIR}/test.key" 4096
+"${OPENSSL_DIR}/bin/openssl" genrsa -out "${TMP_DIR}/test.key" 4096
 sed -e "s/@DOMAIN@/${SSL_DOMAIN}/g" "${ROOT_DIR}/assets/cert.conf.tmpl" \
     > "${TMP_DIR}/cert.conf"
-openssl req -new -key "${TMP_DIR}/test.key" -config "${TMP_DIR}/cert.conf" \
+"${OPENSSL_DIR}/bin/openssl" req -new -key "${TMP_DIR}/test.key" -config "${TMP_DIR}/cert.conf" \
     -out "${TMP_DIR}/test.csr" -sha512 -batch
-openssl x509 -req -in "${TMP_DIR}/test.csr" -signkey "${TMP_DIR}/test.key" \
+"${OPENSSL_DIR}/bin/openssl" x509 -req -in "${TMP_DIR}/test.csr" -signkey "${TMP_DIR}/test.key" \
     -out "${TMP_DIR}/test.crt" -sha512
 
 # Generate testing hosts file.
