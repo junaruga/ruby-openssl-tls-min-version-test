@@ -12,6 +12,9 @@ hosts = [
 ca_file = 'tmp/test.crt'
 
 hosts.each do |host|
+  # require 'debug'
+  # binding.break
+
   uri = URI("https://#{host}")
   begin
     Net::HTTP.start(host, 443, use_ssl: true, ca_file: ca_file) do |http|
