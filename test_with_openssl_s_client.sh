@@ -2,20 +2,20 @@
 
 set -euxo pipefail
 
+# Custom
+#
+# Upstream OpenSSL directory.
+OPENSSL_DIR="${HOME}/.local/openssl-3.4.0-dev-fips-debug-d550d2aae5"
+# Domain.
 DOMAIN='example.com'
+
 CONFIG_ITEMS="
     tls-12.${DOMAIN}|44333
     tls-13.${DOMAIN}|44334
 "
 CA_FILE='tmp/test.crt'
 LOG_DIR="log/openssl-s_client"
-
-OPENSSL_DIR="${OPENSSL_DIR:-}"
-if [ -z "${OPENSSL_DIR}" ]; then
-    OPENSSL_CLI='openssl'
-else
-    OPENSSL_CLI="${OPENSSL_DIR}/bin/openssl"
-fi
+OPENSSL_CLI="${OPENSSL_DIR}/bin/openssl"
 
 rm -rf "${LOG_DIR}"
 mkdir -p "${LOG_DIR}"
