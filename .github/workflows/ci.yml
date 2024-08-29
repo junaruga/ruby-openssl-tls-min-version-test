@@ -8,4 +8,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: sudo apt -yq install python3-bashate
-      - run: bashate *.sh assets/*.sh.tmpl
+      - run: bashate *.sh

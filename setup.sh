@@ -49,15 +49,6 @@ openssl x509 -req -in "${TMP_DIR}/test.csr" -signkey "${TMP_DIR}/test.key" \
 sed -e "s/@DOMAIN@/${SSL_DOMAIN}/g" "${ROOT_DIR}/assets/hosts.tmpl" \
     > "${TMP_DIR}/hosts"
 
-# Generate a testing Ruby script.
-sed -e "s/@DOMAIN@/${SSL_DOMAIN}/g" "${ROOT_DIR}/assets/test.rb.tmpl" \
-    > "${TMP_DIR}/test.rb"
-
-# Generate a testing Bash script with openssl s_client.
-sed -e "s/@DOMAIN@/${SSL_DOMAIN}/g" "${ROOT_DIR}/assets/test_with_openssl_s_client.sh.tmpl" \
-    > "${TMP_DIR}/test_with_openssl_s_client.sh"
-chmod +x "${TMP_DIR}/test_with_openssl_s_client.sh"
-
 # Deploy the SSL certification keys.
 # See the following documents.
 # https://docs.fedoraproject.org/en-US/quick-docs/getting-started-with-apache-http-server/#_securing_apache_httpd
@@ -87,8 +78,10 @@ fi
 # TLS 1.1 and DTLS 1.0 are all disabled at this level.
 if ! grep 'SECLEVEL=0' "${CRYPTO_POLICY_DIR}/opensslcnf.txt"; then
     # Backup the opensslcnf.txt file just in case.
-    sudo cp -p "${CRYPTO_POLICY_DIR}/opensslcnf.txt" "${CRYPTO_POLICY_DIR}/opensslcnf.txt.${TIMESTAMP_NOW}"
-    sudo sed -i -e 's/SECLEVEL=[1-9]/SECLEVEL=0/' "${CRYPTO_POLICY_DIR}/opensslcnf.txt"
+    sudo cp -p "${CRYPTO_POLICY_DIR}/opensslcnf.txt" \
+        "${CRYPTO_POLICY_DIR}/opensslcnf.txt.${TIMESTAMP_NOW}"
+    sudo sed -i -e 's/SECLEVEL=[1-9]/SECLEVEL=0/' \
+        "${CRYPTO_POLICY_DIR}/opensslcnf.txt"
 fi
 
 # Run HTTPD.
