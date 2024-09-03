@@ -77,9 +77,7 @@ command -v openssl
 "${OPENSSL_DIR}/bin/openssl" version
 
 "${OPENSSL_DIR}/bin/openssl" genrsa -out "${TMP_DIR}/test.key" 4096
-sed -e "s/@DOMAIN@/${SSL_DOMAIN}/g" "${ROOT_DIR}/assets/cert.conf.tmpl" \
-    > "${TMP_DIR}/cert.conf"
-"${OPENSSL_DIR}/bin/openssl" req -new -key "${TMP_DIR}/test.key" -config "${TMP_DIR}/cert.conf" \
+"${OPENSSL_DIR}/bin/openssl" req -new -key "${TMP_DIR}/test.key" -config "cert.conf" \
     -out "${TMP_DIR}/test.csr" -sha512 -batch
 "${OPENSSL_DIR}/bin/openssl" x509 -req -in "${TMP_DIR}/test.csr" -signkey "${TMP_DIR}/test.key" \
     -out "${TMP_DIR}/test.crt" -sha512
