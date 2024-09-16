@@ -8,7 +8,7 @@ set -euxo pipefail
 # Custom
 #
 # Upstream OpenSSL directory.
-OPENSSL_DIR="${HOME}/.local/openssl-3.4.0-dev-fips-debug-d550d2aae5"
+OPENSSL_DIR="${HOME}/.local/openssl-3.5.0-dev-fips-debug-d81709316f"
 # This domaiin is used for SSL cert keys.
 # SSL_DOMAIN=${SSL_DOMAIN:-fedoraproject.org}
 SSL_DOMAIN=${SSL_DOMAIN:-example.com}
