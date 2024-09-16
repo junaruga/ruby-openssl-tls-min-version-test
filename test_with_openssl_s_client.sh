@@ -4,10 +4,16 @@ set -euxo pipefail
 
 # Custom
 #
-# Upstream OpenSSL directory.
-# OPENSSL_DIR="${HOME}/.local/openssl-3.5.0-dev-fips-debug-d81709316f"
-# Downstream system OpenSSL.
-OPENSSL_DIR=""
+# Is the used OpenSSL a downstream OpenSSL RPM?
+# false: Use Upstream OpenSSL.
+DOWNSTREAM_OPENSSL=true
+if [ "${DOWNSTREAM_OPENSSL}" = true ]; then
+    # Downstream system OpenSSL.
+    OPENSSL_DIR=""
+else
+    # Upstream OpenSSL directory.
+    OPENSSL_DIR="${HOME}/.local/openssl-3.5.0-dev-fips-debug-d81709316f"
+fi
 # Domain.
 DOMAIN='example.com'
 
@@ -22,7 +28,9 @@ OPENSSL_CLI="${OPENSSL_DIR}/bin/openssl"
 rm -rf "${LOG_DIR}"
 mkdir -p "${LOG_DIR}"
 
-grep '^TLS.Min' /etc/crypto-policies/back-ends/opensslcnf.config
+if [ "${DOWNSTREAM_OPENSSL}" = true ]; then
+    grep '^TLS.Min' /etc/crypto-policies/back-ends/opensslcnf.config
+fi
 
 for item in ${CONFIG_ITEMS}; do
     host="$(echo "${item}" | cut -d '|' -f 1)"
