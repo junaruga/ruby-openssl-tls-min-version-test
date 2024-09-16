@@ -8,7 +8,9 @@ set -euxo pipefail
 # Custom
 #
 # Upstream OpenSSL directory.
-OPENSSL_DIR="${HOME}/.local/openssl-3.5.0-dev-fips-debug-d81709316f"
+# OPENSSL_DIR="${HOME}/.local/openssl-3.5.0-dev-fips-debug-d81709316f"
+# Downstream system OpenSSL.
+OPENSSL_DIR=""
 # This domaiin is used for SSL cert keys.
 # SSL_DOMAIN=${SSL_DOMAIN:-fedoraproject.org}
 SSL_DOMAIN=${SSL_DOMAIN:-example.com}
@@ -16,10 +18,10 @@ SSL_DOMAIN=${SSL_DOMAIN:-example.com}
 ROOT_DIR="$(dirname "${0}")"
 TMP_DIR="${ROOT_DIR}/tmp"
 LOG_DIR="log/openssl-s_server"
-# INSTALLED_RPM_PKGS="
-#     openssl \
-#     openssl-devel \
-# "
+INSTALLED_RPM_PKGS="
+    openssl \
+    openssl-devel \
+"
 CRYPTO_POLICY="$(update-crypto-policies --show)"
 CRYPTO_POLICY_DIR="/usr/share/crypto-policies/${CRYPTO_POLICY}"
 TIMESTAMP_NOW="$(date "+%Y%m%d%H%M%S")"
@@ -71,10 +73,10 @@ rm -rf "${LOG_DIR}"
 mkdir -p "${LOG_DIR}"
 
 # Install necessary RPM packages.
-# if ! rpm -q ${INSTALLED_RPM_PKGS} > /dev/null; then
-#     sudo dnf -y install ${INSTALLED_RPM_PKGS}
-#     # sudo dnf clean all
-# fi
+if ! rpm -q ${INSTALLED_RPM_PKGS} > /dev/null; then
+    sudo dnf -y install ${INSTALLED_RPM_PKGS}
+    # sudo dnf clean all
+fi
 
 # Generate certification keys.
 command -v openssl
