@@ -4,6 +4,8 @@ This repository is to test Ruby OpenSSL for [this issue fix](https://github.com/
 
 ## How to test
 
+For the instructions with OpenSSL RPM on RHEL, see [this document](instructions_rhel.md) first.
+
 ### With Upstream OpenSSL
 
 Update the following items in the files `setup.sh` and `test_with_openssl_s_client.sh`.
