@@ -50,22 +50,37 @@ if [ "${DOWNSTREAM_OPENSSL}" = true ]; then
     fi
 fi
 
-# The connection to the TLS 1.2 server should fail.
-if ! connect_with_openssl_s_client "${TLS_1_2_HOST}" "${TLS_1_2_PORT}"; then
-    echo "TLS 1.2 test - OK"
+if [ "${DOWNSTREAM_OPENSSL}" = true ]; then
+    # The connection to the TLS 1.2 server should fail.
+    if ! connect_with_openssl_s_client "${TLS_1_2_HOST}" "${TLS_1_2_PORT}"; \
+        then
+        echo "TLS 1.2 test - OK"
+    else
+        echo "The connection to the TLS 1.2 server should fail " \
+            "with the crypto-policies opensslcnf.config TLS.MinProtocol " \
+            "TLSv1.3." 1>&2
+        exit 2
+    fi
 else
-    echo "The connection to the TLS 1.2 server should fail " \
-        "with the crypto-policies opensslcnf.config TLS.MinProtocol TLSv1.3." \
-        1>&2
-    exit 2
+    # The connection to the TLS 1.2 server should pass.
+    if connect_with_openssl_s_client "${TLS_1_2_HOST}" "${TLS_1_2_PORT}"; then
+        echo "TLS 1.2 test - OK"
+    else
+        echo "The connection to the TLS 1.2 server should pass." 1>&2
+        exit 2
+    fi
 fi
 
 # The connection to the TLS 1.3 server should pass.
 if connect_with_openssl_s_client "${TLS_1_3_HOST}" "${TLS_1_3_PORT}"; then
     echo "TLS 1.3 test - OK"
 else
-    echo "The connection to the TLS 1.3 server should pass " \
-        "with the crypto-policies opensslcnf.config TLS.MinProtocol TLSv1.3." \
-        1>&2
+    if [ "${DOWNSTREAM_OPENSSL}" = true ]; then
+        echo "The connection to the TLS 1.3 server should pass " \
+            "with the crypto-policies opensslcnf.config TLS.MinProtocol " \
+            "TLSv1.3." 1>&2
+    else
+        echo "The connection to the TLS 1.3 server should pass " 1>&2
+    fi
     exit 3
 fi
