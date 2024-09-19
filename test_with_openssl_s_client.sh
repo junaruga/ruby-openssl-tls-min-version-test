@@ -32,7 +32,6 @@ function connect_with_openssl_s_client {
     "${OPENSSL_CLI}" s_client -connect "${host}:${port}" \
         -CAfile "${CA_FILE}" \
         -debug \
-        -trace \
         < /dev/null \
         > "${LOG_DIR}/${host}.stdout.log" \
         2> "${LOG_DIR}/${host}.stderr.log"
