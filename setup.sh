@@ -28,6 +28,7 @@ INSTALLED_RPM_PKGS="
     openssl \
     openssl-devel \
 "
+CRYPTO_POLICIES_OPENSSLCNF="/etc/crypto-policies/back-ends/opensslcnf.config"
 TIMESTAMP_NOW="$(date "+%Y%m%d%H%M%S")"
 
 function start_ssl_servers {
@@ -112,6 +113,15 @@ if ! grep -E "tls-[0-9]+.${SSL_DOMAIN}" /etc/hosts; then
     # Append the testing domains.
     cat "${TMP_DIR}/hosts" | sudo tee -a /etc/hosts
     cat /etc/hosts
+fi
+
+if ! grep '^TLS.MinProtocol = TLSv1.3$' "${CRYPTO_POLICIES_OPENSSLCNF}"; then
+    # Backup the source file of the symbolic file.
+    sudo cp -pH "${CRYPTO_POLICIES_OPENSSLCNF}" \
+        "${CRYPTO_POLICIES_OPENSSLCNF}.${TIMESTAMP_NOW}"
+    # Replace the value of the TLS.MinProtocol with TLSv1.3.
+    sudo sed -i -E -e '/^TLS.MinProtocol/ s/[^ ]+$/TLSv1.3/' \
+        "${CRYPTO_POLICIES_OPENSSLCNF}"
 fi
 
 # Run SSL servers.
