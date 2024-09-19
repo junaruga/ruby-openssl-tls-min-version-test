@@ -42,26 +42,18 @@ TLSv1.2
 TLSv1.3
 ```
 
+Change the downstream OpenSSL flag to the false temporarily to test with upstream OpenSSL.
+
+```
+$ sed -i -e '/^DOWNSTREAM_OPENSSL/ s/true/false/' test_with_openssl_s_client.sh
+```
+
 Run the following script with the `openssl s_client`. The connections to the TLS 1.2 and 1.3 servers succeed due to no limitation of the TLS version.
 
 ```
 $ ./test_with_openssl_s_client.sh
-...
-+ /home/jaruga/.local/openssl-3.5.0-dev-fips-debug-d81709316f/bin/openssl s_client -connect tls-12.example.com:44333 -CAfile tmp/test.crt -debug -trace
-+ echo 'Passed from tls-12.example.com'
-Passed from tls-12.example.com
-...
-+ /home/jaruga/.local/openssl-3.5.0-dev-fips-debug-d81709316f/bin/openssl s_client -connect tls-13.example.com:44334 -CAfile tmp/test.crt -debug -trace
-+ echo 'Passed from tls-13.example.com'
-Passed from tls-13.example.com
-```
-
-No change for the listening processes.
-
-```
-$ ss -tnl | grep 4433[34]
-LISTEN 0      4096               *:44333            *:*
-LISTEN 0      4096               *:44334            *:*
+TLS 1.2 test - OK
+TLS 1.3 test - OK
 ```
 
 #### With Ruby OpenSSL client program
@@ -95,21 +87,40 @@ LISTEN 0      4096               *:44333            *:*
 LISTEN 0      4096               *:44334            *:*
 ```
 
+Change the downstream OpenSSL flag to the false temporarily to test with upstream OpenSSL.
+
+```
+$ sed -i -e '/^DOWNSTREAM_OPENSSL/ s/true/false/' test.rb
+```
+
 The script works.
 
 ```
-$ ./test.sh
-+ ruby -I /home/jaruga/git/ruby/openssl/lib test.rb
-Loaded from tls-12.example.com
-Loaded from tls-13.example.com
-```
++ ruby -I /home/jaruga/git/ruby/openssl/lib test.rb -v
+Loaded suite test
+Started
+TestRubyOpenSSLTLSMin:
+  test_connect_to_tls_1_2_server_on_downstream_openssl:	O
+===============================================================================
+Omission: omitted. [test_connect_to_tls_1_2_server_on_downstream_openssl(TestRubyOpenSSLTLSMin)]
+test.rb:16:in 'TestRubyOpenSSLTLSMin#test_connect_to_tls_1_2_server_on_downstream_openssl'
+===============================================================================
+: (0.003043)
+  test_connect_to_tls_1_2_server_on_upstream_openssl:	.: (0.060088)
+  test_connect_to_tls_1_3_server_on_downstream_openssl:	O
+===============================================================================
+Omission: omitted. [test_connect_to_tls_1_3_server_on_downstream_openssl(TestRubyOpenSSLTLSMin)]
+test.rb:34:in 'TestRubyOpenSSLTLSMin#test_connect_to_tls_1_3_server_on_downstream_openssl'
+===============================================================================
+: (0.002747)
+  test_connect_to_tls_1_3_server_on_upstream_openssl:	.: (0.010019)
 
-No change for the listening processes.
-
-```
-$ ss -tnl | grep 4433[34]
-LISTEN 0      4096               *:44333            *:*
-LISTEN 0      4096               *:44334            *:*
+Finished in 0.077210411 seconds.
+-------------------------------------------------------------------------------
+4 tests, 2 assertions, 0 failures, 0 errors, 0 pendings, 2 omissions, 0 notifications
+100% passed
+-------------------------------------------------------------------------------
+51.81 tests/s, 25.90 assertions/s
 ```
 
 ### With Downstream OpenSSL RPM
@@ -134,17 +145,8 @@ Run the following script with the `openssl s_client`. The connection to the TLS 
 
 ```
 $ ./test_with_openssl_s_client.sh
-...
-+ grep '^TLS.Min' /etc/crypto-policies/back-ends/opensslcnf.config
-TLS.MinProtocol = TLSv1.3
-...
-+ /bin/openssl s_client -connect tls-12.example.com:44333 -CAfile tmp/test.crt -debug -trace
-+ echo 'Failed from tls-12.example.com'
-Failed from tls-12.example.com
-...
-+ /bin/openssl s_client -connect tls-13.example.com:44334 -CAfile tmp/test.crt -debug -trace
-+ echo 'Passed from tls-13.example.com'
-Passed from tls-13.example.com
+TLS 1.2 test - OK
+TLS 1.3 test - OK
 ```
 
 #### With Ruby OpenSSL client program
@@ -179,16 +181,65 @@ If the Ruby OpenSSL includes the commit <https://github.com/ruby/openssl/commit/
 
 ```
 $ ./test.sh
-+ ruby -I /home/jaruga/git/ruby/openssl/lib test.rb
-Failed to load from tls-12.example.com: SSL_connect returned=1 errno=0 peeraddr=127.0.0.1:44333 state=error: tlsv1 alert protocol version (SSL alert number 70)
-Loaded from tls-13.example.com
++ ruby -I /home/jaruga/git/ruby/openssl/lib test.rb -v
+Loaded suite test
+Started
+TestRubyOpenSSLTLSMin:
+  test_connect_to_tls_1_2_server_on_downstream_openssl:	.: (0.061572)
+  test_connect_to_tls_1_2_server_on_upstream_openssl:	O
+===============================================================================
+Omission: omitted. [test_connect_to_tls_1_2_server_on_upstream_openssl(TestRubyOpenSSLTLSMin)]
+test.rb:26:in 'TestRubyOpenSSLTLSMin#test_connect_to_tls_1_2_server_on_upstream_openssl'
+===============================================================================
+: (0.002513)
+  test_connect_to_tls_1_3_server_on_downstream_openssl:	.: (0.009699)
+  test_connect_to_tls_1_3_server_on_upstream_openssl:	O
+===============================================================================
+Omission: omitted. [test_connect_to_tls_1_3_server_on_upstream_openssl(TestRubyOpenSSLTLSMin)]
+test.rb:42:in 'TestRubyOpenSSLTLSMin#test_connect_to_tls_1_3_server_on_upstream_openssl'
+===============================================================================
+: (0.002364)
+
+Finished in 0.077353526 seconds.
+-------------------------------------------------------------------------------
+4 tests, 2 assertions, 0 failures, 0 errors, 0 pendings, 2 omissions, 0 notifications
+100% passed
+-------------------------------------------------------------------------------
+51.71 tests/s, 25.86 assertions/s
 ```
 
 If the Ruby OpenSSL doesn't include the above commit, it doesn't respect the OS system's minimal TLS protocol version, and overrides the setting as TLS version 1 (`OpenSSL::SSL::TLS1_VERSION`). As a result, the connection to the TLS 1.2 server passes as a following result.
 
 ```
 $ ./test.sh
-+ ruby -I /home/jaruga/git/ruby/openssl/lib test.rb
-Loaded from tls-12.example.com
-Loaded from tls-13.example.com
++ ruby -I /home/jaruga/git/ruby/openssl/lib test.rb -v
+Loaded suite test
+Started
+TestRubyOpenSSLTLSMin:
+  test_connect_to_tls_1_2_server_on_downstream_openssl:	F
+===============================================================================
+Failure: test_connect_to_tls_1_2_server_on_downstream_openssl(TestRubyOpenSSLTLSMin): <OpenSSL::SSL::SSLError> exception was expected but none was thrown.
+test.rb:19:in 'TestRubyOpenSSLTLSMin#test_connect_to_tls_1_2_server_on_downstream_openssl'
+===============================================================================
+: (0.081774)
+  test_connect_to_tls_1_2_server_on_upstream_openssl:	O
+===============================================================================
+Omission: omitted. [test_connect_to_tls_1_2_server_on_upstream_openssl(TestRubyOpenSSLTLSMin)]
+test.rb:26:in 'TestRubyOpenSSLTLSMin#test_connect_to_tls_1_2_server_on_upstream_openssl'
+===============================================================================
+: (0.015299)
+  test_connect_to_tls_1_3_server_on_downstream_openssl:	.: (0.011608)
+  test_connect_to_tls_1_3_server_on_upstream_openssl:	O
+===============================================================================
+Omission: omitted. [test_connect_to_tls_1_3_server_on_upstream_openssl(TestRubyOpenSSLTLSMin)]
+test.rb:42:in 'TestRubyOpenSSLTLSMin#test_connect_to_tls_1_3_server_on_upstream_openssl'
+===============================================================================
+: (0.003061)
+
+Finished in 0.113462763 seconds.
+-------------------------------------------------------------------------------
+4 tests, 2 assertions, 1 failures, 0 errors, 0 pendings, 2 omissions, 0 notifications
+50% passed
+-------------------------------------------------------------------------------
+35.25 tests/s, 17.63 assertions/s
 ```
