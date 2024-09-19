@@ -40,7 +40,6 @@ function start_ssl_servers {
         -cert2 "${TMP_DIR}/test.crt" -key2 "${TMP_DIR}/test.key" \
         -www \
         -debug \
-        -trace \
         > "${LOG_DIR}/tls-12.${SSL_DOMAIN}.stdout.log" \
         2> "${LOG_DIR}/tls-12.${SSL_DOMAIN}.stderr.log" \
         &
@@ -52,7 +51,6 @@ function start_ssl_servers {
         -cert2 "${TMP_DIR}/test.crt" -key2 "${TMP_DIR}/test.key" \
         -www \
         -debug \
-        -trace \
         > "${LOG_DIR}/tls-13.${SSL_DOMAIN}.stdout.log" \
         2> "${LOG_DIR}/tls-13.${SSL_DOMAIN}.stderr.log" \
         &
