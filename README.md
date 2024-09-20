@@ -2,11 +2,23 @@
 
 This repository is to test Ruby OpenSSL for [this issue fix](https://github.com/ruby/openssl/pull/710).
 
+## Contents
+
+* [How to test](#how-to-test)
+  * [With upstream OpenSSL](#with-upstream-openssl)
+  * [With downstream OpenSSL RPM](#with-downstream-openssl-rpm)
+
 ## How to test
 
-For the instructions with OpenSSL RPM on RHEL, see [this document](instructions_rhel.md) first.
+There are 2 cases. The 1st case is with the upstream OpenSSL. The 2nd case is with the downstream (Fedora/CentOS/RHEL) OpenSSL RPM.
 
-### With Upstream OpenSSL
+In the case of the upstream OpenSSL, as far as I know, there is no logic to override the OpenSSL TLS minimal version setting. So, if the upstream patch is applied, OpenSSL clients should connect to TLS servers without errors.
+
+In the case of the downstream OpenSSL, the way of testing is to run TLS version 1.2 and 1.3 servers on the crypto-policy setting `TLS.MinProtocol = TLSv1.3`, and connect to the servers from OpenSSL clients, the `openssl s_client` command and a Ruby application implemented with Ruby OpenSSL library. The clients should fail to connect to the TLS version 1.2 server, and should succeed to connect to the TLS version 1.3 server under the condition.
+
+The reason why only using TLS version 1.2 and 1.3 servers is because we have to consider the state of the `SECLEVEL` in the `/etc/crypto-policies/back-ends/opensslcnf.config` file for TLS version 1.1 or earlier versions. For example, at the SECLEVEL 1, OpenSSL no longer considers the SHA1-MD5 digest and TLS < 1.2. The signatures using SHA1 and MD5 are also forbidden at this level as they have less than 80 security bits. Additionally, SSLv3, TLS version 1.0, TLS version 1.1 and DTLS version 1.0 are all disabled at this level. This can cause unexpected behaviors in OpenSSL for testing.
+
+### With upstream OpenSSL
 
 Update the following items in the files `setup.sh` and `test_with_openssl_s_client.sh`.
 
@@ -125,7 +137,9 @@ Finished in 0.077210411 seconds.
 51.81 tests/s, 25.90 assertions/s
 ```
 
-### With Downstream OpenSSL RPM
+### With downstream OpenSSL RPM
+
+See [this instruction document](instructions_downstream.md) first.
 
 #### With openssl s_client program
 

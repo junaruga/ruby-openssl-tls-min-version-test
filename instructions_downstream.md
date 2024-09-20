@@ -1,4 +1,4 @@
-# Instructions on RHEL
+# Instructions with downstream OpenSSL RPM (Fedora/CentOS Stream/RHEL)
 
 Create a test user.
 
